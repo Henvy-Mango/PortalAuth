@@ -25,21 +25,13 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
-        self.account = QtWidgets.QLineEdit(self.centralwidget)
-        self.account.setEchoMode(QtWidgets.QLineEdit.PasswordEchoOnEdit)
-        self.account.setObjectName("account")
-        self.gridLayout.addWidget(self.account, 0, 0, 1, 1)
-        self.password = QtWidgets.QLineEdit(self.centralwidget)
-        self.password.setEchoMode(QtWidgets.QLineEdit.Password)
-        self.password.setObjectName("password")
-        self.gridLayout.addWidget(self.password, 1, 0, 1, 1)
-        self.login = QtWidgets.QPushButton(self.centralwidget)
-        self.login.setMinimumSize(QtCore.QSize(0, 45))
-        self.login.setObjectName("login")
-        self.gridLayout.addWidget(self.login, 2, 0, 1, 1)
+        self.retry = QtWidgets.QPushButton(self.centralwidget)
+        self.retry.setMinimumSize(QtCore.QSize(0, 45))
+        self.retry.setObjectName("retry")
+        self.gridLayout.addWidget(self.retry, 0, 0, 1, 1)
         self.textBrowser = QtWidgets.QTextBrowser(self.centralwidget)
         self.textBrowser.setObjectName("textBrowser")
-        self.gridLayout.addWidget(self.textBrowser, 3, 0, 1, 1)
+        self.gridLayout.addWidget(self.textBrowser, 1, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 352, 29))
@@ -59,9 +51,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Naomi登录器"))
-        self.account.setPlaceholderText(_translate("MainWindow", "账号"))
-        self.password.setPlaceholderText(_translate("MainWindow", "密码"))
-        self.login.setText(_translate("MainWindow", "登录"))
+        self.retry.setText(_translate("MainWindow", "重试"))
         self.textBrowser.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"

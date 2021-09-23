@@ -28,27 +28,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
-     <widget class="QLineEdit" name="account">
-      <property name="echoMode">
-       <enum>QLineEdit::PasswordEchoOnEdit</enum>
-      </property>
-      <property name="placeholderText">
-       <string>账号</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="QLineEdit" name="password">
-      <property name="echoMode">
-       <enum>QLineEdit::Password</enum>
-      </property>
-      <property name="placeholderText">
-       <string>密码</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="0">
-     <widget class="QPushButton" name="login">
+     <widget class="QPushButton" name="retry">
       <property name="minimumSize">
        <size>
         <width>0</width>
@@ -56,11 +36,11 @@
        </size>
       </property>
       <property name="text">
-       <string>登录</string>
+       <string>重试</string>
       </property>
      </widget>
     </item>
-    <item row="3" column="0">
+    <item row="1" column="0">
      <widget class="QTextBrowser" name="textBrowser">
       <property name="html">
        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -96,7 +76,7 @@ p, li { white-space: pre-wrap; }
   </action>
  </widget>
  <tabstops>
-  <tabstop>login</tabstop>
+  <tabstop>retry</tabstop>
  </tabstops>
  <resources/>
  <connections/>

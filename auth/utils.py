@@ -5,6 +5,9 @@ import math
 import time
 
 import requests
+import urllib3
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -21,6 +24,8 @@ def request(method: str,
             data=None,
             json=None,
             headers=None,
+            cookies=None,
+            verify=True,
             **kwargs):
     # The first HTTP(S) request is not a retry, so need to + 1
     total_requests = max_retries + 1
@@ -33,6 +38,8 @@ def request(method: str,
                 data=data,
                 json=json,
                 headers=headers,
+                cookies=cookies,
+                verify=verify,
                 timeout=21,
                 **kwargs)
         except Exception as e:

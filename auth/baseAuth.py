@@ -6,12 +6,13 @@ from auth.utils import request
 class BaseAuth(object):
     USER_AGENT = ''
     SIGN_URL = ''
-    KEEP_ALIVE_URL = ''
     SIGN_BODY = ''
+    KEEP_ALIVE_URL = ''
     KEEP_ALIVE_BODY = ''
     KEEP_SLEEP_TIME = 600
 
-    def get_header(self):
+    @property
+    def get_sign_header(self):
         header = {
             'Cookie': '',
             'User-Agent': self.USER_AGENT,
@@ -20,10 +21,14 @@ class BaseAuth(object):
         return header
 
     @property
+    def get_keep_header(self):
+        return self.get_sign_header
+
+    @property
     def _sign_info(self):
         try:
             response = request(
-                'post', self.SIGN_URL, data=self.SIGN_BODY, headers=self.get_header())
+                'post', self.SIGN_URL, data=self.SIGN_BODY, headers=self.get_sign_header)
         except Exception as e:
             raise Exception(e)
         return response
@@ -32,7 +37,7 @@ class BaseAuth(object):
     def _keep_alive_info(self):
         try:
             response = request(
-                'post', self.KEEP_ALIVE_URL, data=self.KEEP_ALIVE_BODY, headers=self.get_header())
+                'post', self.KEEP_ALIVE_URL, data=self.KEEP_ALIVE_BODY, headers=self.get_keep_header)
         except Exception as e:
             raise Exception(e)
         return response

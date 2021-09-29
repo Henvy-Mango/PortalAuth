@@ -1,8 +1,9 @@
 import sys
 
 from PyQt5 import QtWidgets, QtGui, QtCore
-from windows import Ui_MainWindow
+
 from tray import TrayIcon
+from windows import Ui_MainWindow
 
 
 class MainForm(QtWidgets.QMainWindow, Ui_MainWindow):

@@ -2,6 +2,8 @@
 
 Using `python <project_package>` or `python -m <project_package>` command.
 """
+from auth.adapter import Adapter
+from auth.gmccAuth import gmccAuth
 
 if not __package__:
     import os
@@ -9,7 +11,6 @@ if not __package__:
 
     sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
-from auth.gmccAuth import gmccAuth
 
 if __name__ == '__main__':
-    gmccAuth().run()
+    Adapter(gmccAuth).start()

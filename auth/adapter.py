@@ -1,11 +1,12 @@
-import threading
+from threading import Thread
 
 
-class Adapter(threading.Thread):
-    def __init__(self, adapter):
-        threading.Thread.__init__(self)
-        self.adapter = adapter()
+class Adapter(Thread):
+    def __init__(self, auth):
+        super().__init__()
+        self.auth = auth()
+        self.setDaemon(True)
 
     def run(self):
         while True:
-            self.adapter.run()
+            self.auth.run()

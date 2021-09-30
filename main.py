@@ -5,6 +5,8 @@ from PyQt5 import QtWidgets, QtGui, QtCore
 from tray import TrayIcon
 from windows import Ui_MainWindow
 
+from auth import Adapter, gmccAuth
+
 
 class MainForm(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
@@ -29,5 +31,7 @@ if __name__ == "__main__":
 
     ti = TrayIcon(mainWin)
     ti.show()
+
+    Adapter(gmccAuth).start()
 
     sys.exit(app.exec_())

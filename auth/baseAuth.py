@@ -43,7 +43,16 @@ class BaseAuth(object):
         return response
 
     def run(self):
-        print(self._sign_info.status_code)
-        while 1:
-            time.sleep(self.KEEP_SLEEP_TIME)
-            print(self._keep_alive_info.status_code)
+        try:
+            timeout = True
+            while True:
+                if timeout:
+                    print(self._sign_info.status_code)
+                time.sleep(self.KEEP_SLEEP_TIME)
+                keep_status = self._keep_alive_info.status_code
+                if keep_status == 200:
+                    timeout = False
+                else:
+                    timeout = True
+        except Exception:
+            pass

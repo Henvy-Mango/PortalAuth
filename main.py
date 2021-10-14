@@ -24,13 +24,14 @@ if __name__ == "__main__":
 
     mainWin = MainForm()
     mainWin.setWindowFlags(QtCore.Qt.WindowSystemMenuHint | QtCore.Qt.WindowCloseButtonHint)
-    mainWin.setWindowIcon(QtGui.QIcon("icon.png"))
+    import ico_rc
+    mainWin.setWindowIcon(QtGui.QIcon(':/icon.ico'))
 
-    # mainWin.close()
-    mainWin.show()
+    mainWin.close()
+    # mainWin.show()
 
-    ti = TrayIcon(mainWin)
-    ti.show()
+    tray = TrayIcon(mainWin)
+    tray.show()
 
     Adapter(gmccAuth).start()
 

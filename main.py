@@ -5,7 +5,7 @@ from PyQt5 import QtWidgets, QtGui, QtCore
 from tray import TrayIcon
 from windows import Ui_MainWindow
 
-from auth import Adapter, gmccAuth
+from auth import Adapter, gmccAuth, cdcAuth
 
 
 class MainForm(QtWidgets.QMainWindow, Ui_MainWindow):
@@ -24,7 +24,9 @@ if __name__ == "__main__":
 
     mainWin = MainForm()
     mainWin.setWindowFlags(QtCore.Qt.WindowSystemMenuHint | QtCore.Qt.WindowCloseButtonHint)
+
     import ico_rc
+
     mainWin.setWindowIcon(QtGui.QIcon(':/icon.ico'))
 
     mainWin.close()

@@ -2,7 +2,7 @@
 
 Using `python <project_package>` or `python -m <project_package>` command.
 """
-from auth import Adapter, gmccAuth
+from auth import Adapter, gmccAuth, cdcAuth
 
 if not __package__:
     import os

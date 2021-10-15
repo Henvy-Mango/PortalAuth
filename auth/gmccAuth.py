@@ -1,6 +1,5 @@
 import time
 
-import requests
 import requests.utils
 
 from auth.baseAuth import BaseAuth

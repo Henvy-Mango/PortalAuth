@@ -9,12 +9,10 @@ class TrayIcon(QtWidgets.QSystemTrayIcon):
 
     def createMenu(self):
         self.menu = QtWidgets.QMenu()
-        self.showAction1 = QtWidgets.QAction(text="显示", triggered=self.show_window)
-        self.showAction2 = QtWidgets.QAction(text="通知", triggered=self.showMsg)
+        self.showUI = QtWidgets.QAction(text="显示", triggered=self.show_window)
         self.quitAction = QtWidgets.QAction(text="退出", triggered=self.quit)
 
-        self.menu.addAction(self.showAction1)
-        self.menu.addAction(self.showAction2)
+        self.menu.addAction(self.showUI)
         self.menu.addAction(self.quitAction)
         self.setContextMenu(self.menu)
 
@@ -26,8 +24,11 @@ class TrayIcon(QtWidgets.QSystemTrayIcon):
         # 把鼠标点击图标的信号和槽连接
         self.activated.connect(self.onIconClicked)
 
+        # 把主界面点击按钮的信号和槽连接
+        self.ui.trigger.connect(self.showMsg)
+
     def showMsg(self):
-        self.showMessage("Message", "skr at here", self.icon)
+        self.showMessage("通知", f"重试成功", self.icon)
 
     def show_window(self):
         # 若是最小化，则先正常显示窗口，再变为活动窗口（暂时显示在最前面）

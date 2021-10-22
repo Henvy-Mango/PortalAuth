@@ -8,21 +8,23 @@ from windows import Ui_MainWindow
 
 
 class MainForm(QtWidgets.QMainWindow, Ui_MainWindow):
+    trigger = QtCore.pyqtSignal()
+
     def __init__(self, baseAuth, parent=None):
         super(MainForm, self).__init__(parent)
         self.setupUi(self)
-        self.retry.clicked.connect(self.display)
+        self.retry.clicked.connect(self.repeat)
         self.thread = Adapter(baseAuth)
-        self.thread.status.connect(self.output)
+        self.thread.status.connect(self.print)
         self.thread.start()
 
-    def display(self):
+    def repeat(self):
         self.textBrowser.clear()
         self.thread.terminate()
-        self.textBrowser.append(f"重试中！")
+        self.trigger.emit()
         self.thread.start()
 
-    def output(self, str):
+    def print(self, str):
         self.textBrowser.append(f"{str}")
 
 
@@ -33,7 +35,7 @@ if __name__ == "__main__":
     # mainWin = MainForm(gmccAuth)
     mainWin = MainForm(cdcAuth)
 
-    mainWin.setWindowFlags(QtCore.Qt.WindowSystemMenuHint | QtCore.Qt.WindowCloseButtonHint)
+    mainWin.setWindowFlags(QtCore.Qt.WindowType.WindowSystemMenuHint | QtCore.Qt.WindowType.WindowCloseButtonHint)
 
     mainWin.setWindowIcon(QtGui.QIcon(':/icon.ico'))
 

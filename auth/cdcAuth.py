@@ -1,5 +1,3 @@
-import time
-
 from auth.baseAuth import BaseAuth
 
 
@@ -21,18 +19,3 @@ class cdcAuth(BaseAuth):
             'Content-Type': 'application/x-www-form-urlencoded',
         }
         return header
-
-    def run(self):
-        try:
-            timeout = True
-            while True:
-                if timeout:
-                    print(self._sign_info.status_code)
-                time.sleep(self.KEEP_SLEEP_TIME)
-                keep_status = self._keep_alive_info.status_code
-                if keep_status == 200:
-                    timeout = False
-                else:
-                    timeout = True
-        except Exception:
-            pass

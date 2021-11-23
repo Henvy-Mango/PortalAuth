@@ -10,11 +10,12 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     app.setQuitOnLastWindowClosed(False)
 
-    # mainWin = MainForm(gmccAuth)
-    mainWin = MainForm(cdcAuth)
+    mainWin = MainForm(gmccAuth)
+    # mainWin = MainForm(cdcAuth)
 
     mainWin.setWindowFlags(QtCore.Qt.WindowSystemMenuHint | QtCore.Qt.WindowCloseButtonHint)
 
+    import ico_rc
     mainWin.setWindowIcon(QtGui.QIcon(':/icon.ico'))
 
     mainWin.close()

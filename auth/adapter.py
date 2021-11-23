@@ -2,7 +2,7 @@ from PyQt5.QtCore import QThread, pyqtSignal
 
 
 class Adapter(QThread):
-    status = pyqtSignal(int)
+    status = pyqtSignal(str)
 
     def __init__(self, auth):
         super().__init__()
@@ -11,20 +11,20 @@ class Adapter(QThread):
     def run(self):
         while True:
             try:
-                timeout = True
+                re_login = True
                 while True:
-                    if timeout:
+                    if re_login:
                         sign_status = self.auth._sign_info.status_code
-                        self.status.emit(sign_status)
+                        self.status.emit(f'LoginStatus: {str(sign_status)}')
 
                     QThread.sleep(self.auth.KEEP_SLEEP_TIME)
 
                     keep_status = self.auth._keep_alive_info.status_code
-                    self.status.emit(keep_status)
 
                     if keep_status == 200:
-                        timeout = False
+                        re_login = False
                     else:
-                        timeout = True
+                        re_login = True
+                        self.status.emit(f'KeepStatusError: {str(keep_status)}')
             except Exception:
                 pass

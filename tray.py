@@ -17,6 +17,7 @@ class TrayIcon(QtWidgets.QSystemTrayIcon):
         self.setContextMenu(self.menu)
 
         # 设置图标
+        import ico_rc
         self.setIcon(QtGui.QIcon(":/icon.ico"))
         self.icon = self.MessageIcon()
 

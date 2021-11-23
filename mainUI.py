@@ -17,9 +17,9 @@ class MainForm(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def repeat(self):
         self.textBrowser.clear()
-        self.thread.terminate()
+        # self.thread.terminate()
         self.trigger.emit()
-        self.thread.start()
+        # self.thread.start()
 
     def print(self, str):
         self.textBrowser.append(f"{str}")
